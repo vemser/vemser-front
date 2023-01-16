@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <AuthProvider>
         <ToastContainer />
             <Routes>
