@@ -1,0 +1,27 @@
+a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 203px;
+    height: 200px;
+    width: 200px;
+    border: 1px solid var(--color-blue);
+    border-radius: 12px;   
+    transition: 200ms all ease;
+}
+
+.container{
+    color: var(--color-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+a:hover{
+    box-shadow: 4px 4px 8px 4px  rgba(0,0,0, 0.12);
+}
