@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { api, authApi } from '../utils/api'
-import { IAuthContext, IChildren, IUser, IUsuarioLogado } from '../utils/interfaces'
+import { IAuthContext, IChildren, IUser, IUsuarioLogado, toastConfig } from '../utils/interfaces'
 import axios from 'axios'
 
 export const AuthContext = createContext({} as IAuthContext)
@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }: IChildren) => {
     const navigate = useNavigate()
     const [roles, setRoles] = useState<string[] | undefined>([]);
     const [dadosUsuarioLogado, setDadosUsuarioLogado] = useState<IUsuarioLogado | {}>({});
-    const accesstoken = localStorage.getItem('token')
+    const accessToken = localStorage.getItem('token')
 
     const parseJwt = async (token: any) => {
         try {
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }: IChildren) => {
     
     const loggedUser = async () => {
       try {
-        authApi.defaults.headers.common['Authorization'] = accesstoken;
+        authApi.defaults.headers.common['Authorization'] = accessToken;
         const { data } = await authApi.get('/usuario/logged-user');
         setDadosUsuarioLogado(data);
       } catch (error: any) {
@@ -79,6 +79,23 @@ export const AuthProvider = ({ children }: IChildren) => {
         setRoles(roleArray)
       }
 
+
+      // Atualizar foto do PRÓPRIO usuário
+      const inserirFotoUsuario = async (data: any) => {
+        try {
+          authApi.defaults.headers.common['Authorization'] = accessToken
+          await authApi.put(`/foto/upload-image-perfil`, data)
+          loggedUser()
+          toast.success('Foto de perfil alterada com sucesso', toastConfig)
+
+        } catch (error) {
+          toast.error('Houve algum error, tente novamente!', toastConfig)
+          console.log(error)
+        } 
+      }
+
+
+
     return (
         <AuthContext.Provider value={{
             handleLogin,
@@ -86,7 +103,8 @@ export const AuthProvider = ({ children }: IChildren) => {
             handleLogout,
             dadosUsuarioLogado,
             loggedUser,
-            refreshAuth
+            refreshAuth,
+            inserirFotoUsuario
         }}>
             {children}
         </AuthContext.Provider>

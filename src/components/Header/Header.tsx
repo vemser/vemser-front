@@ -59,14 +59,15 @@ export const Header = () => {
     >
       <Container maxWidth={false} className={'headerContainer'}>
         <Toolbar disableGutters className={'toolbar'}>
-          <Box
-            data-testid="id-logo"
-            className={'logoImg'}
-            sx={{ display: { xs: 'none', md: 'flex' } }}
-          >
-            <img src={imgLogo} alt="Logo DBC" title="Logo" />   
-          </Box>
-
+            <Box
+              data-testid="id-logo"
+              className={'logoImg'}
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+            >
+              <Link to="/acesso">
+                <img src={imgLogo} alt="Logo DBC" />
+              </Link>
+            </Box>
           <Box
             className={'menuBurgerContainer'}
             sx={{ display: { xs: 'flex', md: 'none' } }}
@@ -105,7 +106,7 @@ export const Header = () => {
             className={'logoImg'}
             sx={{ display: { xs: 'flex', md: 'none' } }}
           >
-            <Link to="/">
+            <Link to="/acesso">
               <img src={imgLogo} alt="Logo DBC" />
             </Link>
           </Box>

@@ -11,7 +11,7 @@ interface ICard {
 
 export const Card = ({title, url}: ICard) => {
   return (
-    <a href={url} target='_blank'>
+    <a href={url} target='_blank' className={styles.card}>
       <div className={styles.container}>   
         <h2>{title}</h2>
         {title && title == 'Gerencial' ? <FaCog size={72}/> : 

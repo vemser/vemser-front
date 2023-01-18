@@ -1,4 +1,4 @@
-a {
+.card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +22,6 @@ a {
     gap: 20px;
 }
 
-a:hover{
+.card:hover{
     box-shadow: 4px 4px 8px 4px  rgba(0,0,0, 0.12);
 }

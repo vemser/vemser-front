@@ -14,6 +14,7 @@ export interface IAuthContext {
     dadosUsuarioLogado: any
     loggedUser: () => Promise<void>
     refreshAuth: (token: string) => void
+    inserirFotoUsuario: (data: any) => Promise<void>
 }
 
 export const toastConfig: object = {

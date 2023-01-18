@@ -6,6 +6,7 @@ import { Acesso } from './pages/Acesso/Acesso'
 import { Login } from './pages/Login/Login'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Perfil } from './pages/Perfil/Perfil'
 
 export const AppRoutes = () => {
   return (
@@ -15,6 +16,11 @@ export const AppRoutes = () => {
             <Routes>
                 {/* PUBLIC ROUTES */}
                 <Route path='/' element={<Login />} />
+
+                <Route path="/perfil" element={<AccessRoute />}>
+                  <Route index element={<Perfil />} />
+                </Route>
+
 
                 <Route path='/acesso' element={<AccessRoute />}>
                     <Route index element={<Acesso/>} />
