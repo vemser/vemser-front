@@ -38,14 +38,15 @@
 }
 
 #nprogress .bar {
-  background: #ffffff !important;
+  background: #bed1ff !important;
+  color: #bed1ff !important;
   padding: 0 4px !important;
   height: 4px !important;
 }
 
 #nprogress .spinner .spinner-icon {
-  border-top-color: #ffffff !important;
-  border-left-color: #ffffff !important;
+  border-top-color: #bed1ff !important;
+  border-left-color: #bed1ff !important;
   padding: 12px 12px !important;
   height: 15px !important;
 }

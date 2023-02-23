@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }: IChildren) => {
 
   const loggedUser = async () => {
     try {
-      nProgress.start();
       authApi.defaults.headers.common['Authorization'] = accessToken;
       const { data } = await authApi.get('/usuario/logged-user');
       setDadosUsuarioLogado(data);
@@ -37,14 +36,12 @@ export const AuthProvider = ({ children }: IChildren) => {
         toast.error('Sessão expirada!');
         handleLogout();
       }
-    } finally {
-      nProgress.done();
     }
   };
 
   const handleLogin = async (user: IUser) => {
     try {
-
+      nProgress.start();
       const { data } = await authApi.post('/usuario/login', user);
       authApi.defaults.headers.common['Authorization'] = data;
       localStorage.setItem('token', data);
@@ -66,7 +63,9 @@ export const AuthProvider = ({ children }: IChildren) => {
       } else {
         toast.error('Houve um erro no servidor, por favor tente novamente mais tarde.');
       }
-    };
+    } finally {
+      nProgress.done();
+    }
   };
 
   const handleLogout = async () => {
@@ -87,6 +86,7 @@ export const AuthProvider = ({ children }: IChildren) => {
   // Atualizar foto do PRÓPRIO usuário
   const inserirFotoUsuario = async (data: any) => {
     try {
+      nProgress.start();
       authApi.defaults.headers.common['Authorization'] = accessToken
       await authApi.put(`/foto/upload-image-perfil`, data)
       loggedUser()
@@ -95,10 +95,10 @@ export const AuthProvider = ({ children }: IChildren) => {
     } catch (error) {
       toast.error('Houve algum error, tente novamente!', toastConfig)
       console.log(error)
+    } finally {
+      nProgress.done();
     }
   }
-
-
 
   return (
     <AuthContext.Provider value={{
