@@ -28,12 +28,11 @@ export const Login = () => {
   }
 
   return (
-    <Box sx={{ height: '100vh', width: '100%', backgroundColor: '#1E62FE' }}>
+    <Box sx={{ minHeight: '100vh', width: '100%', backgroundColor: '#1E62FE' }}>
       <Container
         component="main"
         maxWidth="xs"
         sx={{
-          height: '80vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -42,6 +41,7 @@ export const Login = () => {
         <Box
           sx={{
             marginTop: 8,
+            marginBottom: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center'

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+#nprogress .bar {
+  background: #ffffff !important;
+  padding: 0 4px !important;
+  height: 4px !important;
+}
+
+#nprogress .spinner .spinner-icon {
+  border-top-color: #ffffff !important;
+  border-left-color: #ffffff !important;
+  padding: 12px 12px !important;
+  height: 15px !important;
+}
