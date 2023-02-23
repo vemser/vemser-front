@@ -5,8 +5,9 @@ import { AccessRoute } from './pages/PrivateRoute/PrivateRoute'
 import { Acesso } from './pages/Acesso/Acesso'
 import { Login } from './pages/Login/Login'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { Perfil } from './pages/Perfil/Perfil'
+import 'react-toastify/dist/ReactToastify.css'
+import 'nprogress/nprogress.css'
 
 export const AppRoutes = () => {
   return (
